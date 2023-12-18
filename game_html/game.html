@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Number Game</title>
+    <style>
+	body{
+			display: flex;
+			padding-left:6%;
+			padding-right: 6%;
+    align-items: center ;
+    justify-content: center;
+	flex-direction: column;
+	background-color: black;
+		}
+
+      
+          .button {
+            
+			
+          background-color: #370676; /* Green */
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          /* display: inline-block; */
+          /*display: flex;*/
+          /* justify-content: center;*/
+          display: flex;
+          justify-content: center;
+          font-size: 50px;
+          margin: 90px 100px;
+          
+          cursor: pointer;
+          border-radius: 10px;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        .button:hover {
+          background-color: #6c14d1;
+        }
+</style>
+  </head>
+  <body>
+    <a href="./index.html">  <button class="button">Number GAME</button></a>
+
+    <!-- <h1 class="button">Number Game</h1> -->
+   <h1 class="button"><div id="game"></div></h1>
+    <script>
+      class Name {
+        constructor() {
+          this.names = {};
+        }
+        addName(name, result) {
+          this.names[name] = result;
+        }
+        saveNames() {
+          // Here you can save the names and results
+        }
+        displayNames() {
+          let output = "Save name and results : <br>";
+          for (let name in this.names) {
+            output += `${name}: ${this.names[name]}<br>`;
+          }
+          document.getElementById('game').innerHTML = output;
+        }
+      }
+      const nameStorage = new Name();
+      while (true) {
+        nameStorage.displayNames();
+        let play = prompt("Begin Game --> ENTER or press -> q <- and Enter to exit");
+        if (play.toLowerCase() === 'q') {
+          break;
+        }
+        let name = prompt("What is your name ?");
+        alert(`Hello, ${name}!`);
+        let kaze = parseInt(prompt(`${name}, up to what number? 1 up to ..`));
+        if (kaze !== 0) {
+          alert(`Guess the hidden number from 1 to ${kaze}`);
+          let sodi = Math.floor(Math.random() * kaze) + 1;
+          let i = 0;
+          while (true) {
+            i++;
+            let x = parseInt(prompt("Give a number:"));
+            alert(`Times - (${i})`);
+            if (x === sodi) {
+              alert(`V I C T O R Y !!\n${name} winner from ${i} times on number ${sodi} for ${kaze}`);
+              let result = i;
+              nameStorage.addName(name, result);
+              nameStorage.saveNames();
+              nameStorage.displayNames();
+              //let playAgain = prompt("Restart Game -> Enter");
+
+              break;
+            } else {
+            //   alert("Br-r-r");
+              if (x < sodi) {
+                alert('-->> more');
+              } else if (x > sodi) {
+                alert('<<-- less');
+              } 
+               
+            } 
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
+
+<!-- confirm()alert() prompt() -->

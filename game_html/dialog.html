@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Custom Dialog</title>
+    <style>
+      .dialog {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        border: 1px solid black;
+        padding: 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+      }
+      .dialog h1 {
+        margin-top: 0px;
+      }
+      .dialog p {
+        margin-bottom: 0px;
+      }
+      .dialog button {
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <button onclick="showDialog()">Show Dialog</button>
+    <div id="dialog" class="dialog" style="display: none;">
+      <h1>Custom Dialog</h1>
+      <p>This is a custom dialog.</p>
+      <button onclick="hideDialog()">Close</button>
+    </div>
+    <script>
+      function showDialog() {
+        document.getElementById('dialog').style.display = 'block';
+      }
+      function hideDialog() {
+        document.getElementById('dialog').style.display = 'none';
+      }
+    </script>
+  </body>
+</html>
